@@ -1,0 +1,19 @@
+A = [1,2,3,4] // input array
+M = [0,0,0,0] // empty array of n length
+n = 4
+
+MaxSum(i):
+    if i > n:  //if all elements have been exhausted
+        return 0
+    if M[i] =! 0:  //if value has already been found
+        return M[i]
+
+    best = A[i] + MaxSum(i+1) // finds best combination for the i+1 index
+
+    if i + 1 < n: // check if the array is long enough to support i+2 indexing
+        best_two = 10 * A[i] + A[i+1] + MaxSum(i+2) // find best combination from i to i +2 
+
+        best = max(best, best_two) // take the max of these two values
+
+    M[i] = best // Assign that value to the empty array
+    return best // return best
